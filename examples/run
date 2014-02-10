@@ -1,0 +1,61 @@
+#!/usr/bin/escript
+%%! -pz ebin
+
+main([]) ->
+  main(["--help"]);
+main(["--help"]) ->
+  io:fwrite("Usage:~n  ~s [--parser] filename~n  ~s --lexer filename~n"
+                    "  ~s --eni filename~n",
+            [escript:script_name(), escript:script_name(), escript:script_name()]),
+  ok;
+
+main(["--lexer", File]) ->
+  io:fwrite("# lexer~n"),
+  {ok, B} = file:read_file(File),
+  case eni_lexer:string(binary_to_list(B)) of
+    {ok, Tokens, _EOFLineNum} ->
+      io:fwrite("~p~n", [Tokens]);
+    {error, Reason} ->
+      io:fwrite("!! ~p~n", [Reason])
+  end,
+  ok;
+
+main(["--eni", File]) ->
+  io:fwrite("eni~n"),
+  case eni:file(File) of
+    {ok, {A, B}} ->
+      io:fwrite("# options without section~n"),
+      [io:fwrite("  - ~p -> ~p~n", [N,V]) || {N,V} <- A],
+      io:fwrite("# sections~n"),
+      [io:fwrite("[~p] => ~p~n", [N,V]) || {N,V} <- B],
+      ok;
+    {error, Reason} ->
+      io:fwrite("!! ENI error:~n~p~n", [Reason])
+  end,
+  ok;
+
+main([File]) ->
+  main(["--parser", File]);
+main(["--parser", File]) ->
+  io:fwrite("parser~n"),
+  {ok, B} = file:read_file(File),
+  case eni_lexer:string(binary_to_list(B)) of
+    {ok, Tokens, _EOFLineNum} ->
+      case eni_parser:parse(Tokens) of
+        {ok, {NoSection, Sections}} ->
+          io:fwrite("~p~n", [NoSection]),
+          [io:fwrite("~p -> ~p~n", [N,V]) || {N,V} <- Sections];
+        {error, Reason} ->
+          io:fwrite("@! ~p~n", [Reason]);
+        _Any ->
+          io:fwrite("WTF? ~p~n", [_Any])
+      end;
+    {error, Reason} ->
+      io:fwrite("*! ~p~n", [Reason])
+  end,
+  ok;
+
+main(_) ->
+  main(["--help"]).
+
+%% vim:ft=erlang
