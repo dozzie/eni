@@ -1,0 +1,17 @@
+; comment
+# also comment
+% and this one
+
+no_section = 100
+
+[sect]
+string	= some string
+# may be ended with period, but doesn't need to
+term := [{atom, true}, <<"binary">>]
+
+[s1]
+foo = bar
+fooa := bar
+fooa. := nabla.
+
+# vim:ft=dosini

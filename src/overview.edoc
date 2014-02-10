@@ -1,0 +1,13 @@
+@author Stanislaw Klekot <dozzie@jarowit.net>
+@version 0.0.0
+@title INI file parser for Erlang.
+@doc
+
+<b>TODO</b>: some description.
+
+== Example usage ==
+
+For usage examples see documentation of {@link examples_client} and
+{@link examples_server} modules.
+
+<!-- vim:set ft=edoc: -->
