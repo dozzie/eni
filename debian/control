@@ -1,0 +1,20 @@
+Source: erlang-eni
+Maintainer: Stanislaw Klekot <dozzie@jarowit.net>
+Section: erlang
+Priority: extra
+Build-Depends: debhelper (>> 7.0.0), erlang-base, erlang-dev
+
+Package: erlang-eni
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, erlang-base
+Recommends: erlang-x11 | erlang-nox
+Description: INI-like configuration loader for Erlang
+ INI-like configuration loader for Erlang
+
+Package: erlang-eni-doc
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: INI-like configuration loader for Erlang - API documentation
+ INI-like configuration loader for Erlang
+ .
+ This package contains API documentation generated out of ENI's sources.

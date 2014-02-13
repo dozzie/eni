@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+include /usr/share/dh-rebar/make/dh-rebar.Makefile
+
+%:
+	dh $@
+
+install-doc:
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/doc/erlang-eni
+	cp -R doc $(CURDIR)/debian/tmp/usr/share/doc/erlang-eni/API
+
+override_dh_auto_install: install install-doc
+
+override_dh_auto_build:
+	rebar compile
+	rebar doc
+
+override_dh_auto_test:
+	: skipped

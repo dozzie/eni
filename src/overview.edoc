@@ -1,5 +1,5 @@
 @author Stanislaw Klekot <dozzie@jarowit.net>
-@version 0.0.0
+@version 0.0.1
 @title Configuration file parser for Erlang.
 @doc
 
