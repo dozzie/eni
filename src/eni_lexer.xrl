@@ -1,17 +1,18 @@
 Definitions.
 
 ID = [a-zA-Z0-9._-]+
-S  = [\s\t\r]*
+S  = [\s\t]*
+NL = \r?\n
 
 %%%---------------------------------------------------------------------------
 
 Rules.
 
 % comment
-{S}([%#;].*)?\n : skip_token.
+{S}([%#;].*)?{NL} : skip_token.
 
 % section header
-\[{ID}\]{S}\n     : {token, {section, TokenLine, section(TokenChars)}}.
+{S}\[{ID}\]{S}{NL} : {token, {section, TokenLine, section(TokenChars)}}.
 
 % regular option (string = string)
 {S}{ID}{S}={S}.* : {token, {option,  TokenLine, option(TokenChars)}}.
@@ -32,7 +33,7 @@ Rules.
       {error, "Invalid token"}
   end.
 
-\n : skip_token.
+{NL} : skip_token.
 
 %%%---------------------------------------------------------------------------
 
