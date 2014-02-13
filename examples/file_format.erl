@@ -54,7 +54,8 @@
 %%%   from <i>http</i> section (list of two integers) and <i>bind</i> from
 %%%   <i>https</i> section (single atom `any').
 %%%
-%%%   @TODO Add support for including a file or directory.
+%%%   @TODO Support for including a file or directory.
+%%%   @TODO Support for reading secret (string) from a separate file.
 %%%
 %%% @end
 %%%---------------------------------------------------------------------------
