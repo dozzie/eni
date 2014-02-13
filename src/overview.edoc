@@ -1,13 +1,12 @@
 @author Stanislaw Klekot <dozzie@jarowit.net>
 @version 0.0.0
-@title INI file parser for Erlang.
+@title Configuration file parser for Erlang.
 @doc
 
-<b>TODO</b>: some description.
+ENI is a configuration format based on dead-simple INI known from DOS and
+Windows. ENI is a superset of (one of the variants of) INI -- ENI additionally
+supports Erlang terms in config.
 
-== Example usage ==
-
-For usage examples see documentation of {@link examples_client} and
-{@link examples_server} modules.
+You can find detailed format description here: {@link file_format}.
 
 <!-- vim:set ft=edoc: -->

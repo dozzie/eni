@@ -1,6 +1,6 @@
 %%%---------------------------------------------------------------------------
 %%% @doc
-%%%   INI file parser.
+%%%   INI-like config loader.
 %%% @end
 %%%---------------------------------------------------------------------------
 
@@ -11,21 +11,21 @@
 %%%---------------------------------------------------------------------------
 %%% types
 
-%% @type config() = {option_list(), [section()]}.
+%% @type config() = {NoSectionOptions :: [option()], Sections :: [section()]}.
 
--type config() :: {option_list(), [section()]}.
+-type config() :: {[option()], [section()]}.
 
-%% @type section() = {section_name(), option_list()}.
+%% @type section() = {section_name(), [option()]}.
 
--type section() :: {section_name(), option_list()}.
+-type section() :: {section_name(), [option()]}.
 
 %% @type section_name() = atom().
 
 -type section_name() :: atom().
 
-%% @type option_list() = [{atom(), term()}].
+%% @type option() = {Name :: atom(), Value :: term()}.
 
--type option_list() :: [{atom(), term()}].
+-type option() :: {atom(), term()}.
 
 %%%---------------------------------------------------------------------------
 
