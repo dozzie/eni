@@ -14,7 +14,7 @@ all: compile doc
 doc edoc:
 	rebar doc
 
-compile build: dialyzer
+compile build:
 	rebar compile
 
 dialyzer:
