@@ -75,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc COPYING
+%doc README
 %exclude %{_app_doc}
 %exclude %{_app_src}
 %{_app_libdir}

@@ -7,6 +7,51 @@ ENI is a configuration format based on dead-simple INI known from DOS and
 Windows. ENI is a superset of (one of the variants of) INI -- ENI additionally
 supports Erlang terms in config.
 
+ENI is not intended to be used inside typical Erlang application. There is
+already well established practice of keeping default configuration in `*.app'
+file and customizing it by setting environment.
+
+ENI is meant mainly for maintainers writing tools that interact with system
+administrator. Such tools usually are scripts for starting a daemon or
+command line tools, standalone or for issuing commands to a daemon.
+
 You can find detailed format description here: {@link file_format}.
+
+== Examples ==
+
+Usage examples:
+
+```
+% loading config from file
+{ok, Conf} = eni:file("file.eni"),
+% loading config from in-memory string
+{ok, Conf} = eni:string("..."),
+
+{Opts, Sections} = Conf,
+Foo = proplists:get_value(foo, Opts),
+BarSect = proplists:get_value(bar, Sections),
+Bar_Baz = proplists:get_value(baz, BarSect).
+'''
+
+Short example of ENI file:
+
+```
+; traditional INI comment
+# more "unixish" comment
+% and "erlangish" comment
+
+pid_file = /var/run/erl_daemon.pid
+enabled_services := [http, https].
+
+[http]
+bind = 127.0.0.1
+port := [8080, 8880].
+
+[https]
+bind := any.
+port = 8443
+ssl_cert = /etc/erl_daemon/cert.pem
+ssl_key  = /etc/erl_daemon/key.pem
+'''
 
 <!-- vim:set ft=edoc: -->
