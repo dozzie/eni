@@ -45,3 +45,11 @@ Short example of ENI file:
   port = 8443
   ssl_cert = /etc/erl_daemon/cert.pem
   ssl_key  = /etc/erl_daemon/key.pem
+
+== Contact ==
+
+ENI was written by Stanislaw Klekot <dozzie at jarowit.net>.
+The primary distribution point is <http://dozzie.jarowit.net/>, with
+a secondary address on GitHub <https://github.com/dozzie/eni>.
+
+ENI is distributed under 3-clause BSD license.
