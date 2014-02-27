@@ -15,7 +15,9 @@ Rules.
 {S}\[{ID}\]{S}{NL} : {token, {section, TokenLine, section(TokenChars)}}.
 
 % regular option (string = string)
-{S}{ID}{S}={S}.* : {token, {option,  TokenLine, option(TokenChars)}}.
+{S}{ID}{S}={S}.* :
+  {ok, Option} = option(TokenChars), % no possibility of failure here
+  {token, {option,  TokenLine, Option}}.
 % Erlang term option, ended with period
 {S}{ID}{S}:={S}.*\.{S} :
   case option(TokenChars) of
