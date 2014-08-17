@@ -1,6 +1,14 @@
 %%%---------------------------------------------------------------------------
 %%% @doc
 %%%   INI-like config loader.
+%%%
+%%%   Configuration returned by the functions from this module are simple
+%%%   proplists with atoms being the keys and strings (or Erlang terms) being
+%%%   the values. Named sections are gathered similar, into a proplist with
+%%%   atom keys (the value is, of course, a proplist with section's content).
+%%%
+%%%   Multiple value occurrences result in multiple entries in proplist,
+%%%   preserving the occurrence order.
 %%% @end
 %%%---------------------------------------------------------------------------
 
