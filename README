@@ -1,5 +1,10 @@
 == ENI ==
 
+IMPORTANT NOTE: this project uses custom file format, and as such, it's
+deprecated. It's recommended to use an already popular format, like TOML.
+A TOML parser by the same author as ENI can be found here:
+  http://dozzie.jarowit.net/trac/wiki/TOML
+
 ENI is a configuration format based on dead-simple INI known from DOS and
 Windows. ENI is a superset of (one of the variants of) INI -- ENI additionally
 supports Erlang terms in config.
